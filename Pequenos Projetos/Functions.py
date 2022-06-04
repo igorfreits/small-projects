@@ -1,10 +1,9 @@
 class Cart:
     def __init__(self):
-        self.purchases = {}  # carrinho de compras
-
-    # adiciona itens e preços no carrinho
-
+        self.purchases = {}  # carrinho de compras{Produto:valor}
+        
     def insect_products(self, compras, price):
+        # adiciona itens e preços no carrinho
         if 'Cart Items' not in self.purchases:
             self.purchases['Cart Items'] = {compras: int(price)}
         else:
@@ -21,8 +20,9 @@ class Cart:
             f'O seu carrinho contem \033[32m{len(self.purchases["Cart Items"])}\033[m itens'
             f' e ele tem um valor total de: \033[32mR${sum_total(self)}\033[m')  # valor total do carrinho
 
-    def payment(self):
-        payment = int(input('Escolha a forma de pagamento:'
+    def payment(self):  # Pagamento em dinheiro e credito
+        payment = int(input(f'Valor total do carrinho: \033[32mR${sum_total(self)}\033[m'
+                            '\nEscolha a forma de pagamento: '
                             '\n [ 1 ] - A vista no debito/cartão ou Pix - 10% de desconto'
                             '\n [ 2 ] - Cartão de credito - Juros a partir de 5x pra cima'
                             '\n ...'))
@@ -30,12 +30,12 @@ class Cart:
             case 1:
                 money = int(input('Pagamento em dinheiro foi selecionado'
                                   '\n Digite o valor que ira pagar: '))
-                if money < sum_total():
+                if money < sum_total(self):
                     print(
-                        'Voce nao tem dinheiro suficiente, selecione outra opção de pagamento')
+                        '\033[31mVoce nao tem dinheiro suficiente, selecione outra opção de pagamento\033[m')
                     self.payment()
 
-                elif money == sum_total():
+                elif money == sum_total(self):
                     print(
                         '\033[34m O seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
 
@@ -55,25 +55,25 @@ class Cart:
 
                 if credit < 3:  # 5% de desconto
                     print(
-                        f'Voce recebeu \033[35m 5% \033[m de desconto e agora sua compra tera um valor total de:'
-                        f'\033[35m R${sum_total(self)-(sum_total(self) * 5 / 100)} \033[m')
-                    print(
-                        '\033[34m O seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
+                        f'Voce recebeu \033[35m5%\033[m de desconto e agora sua compra tera um valor total de:'
+                        f'\033[35m R${sum_total(self)-(sum_total(self) * 5 / 100)} \033[m\n'
+                        f'\nE a parcela de sua compra sera de: \033[35mR${(sum_total(self)-sum_total(self) * 5 / 100)/credit:.2f}\033[m'
+                        '\n\033[34mO seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
 
-                elif credit >= 7:  # 5% de juros
-                    print(f'Sera cobrado \033[35m 5% \033[m de juros e agora sua compra tem o valor total de'
-                          f'\033[35m R${sum_total(self)+(sum_total(self) * 5 / 100 )} \033[m')
-                    print(
-                        '\033[34m O seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
+                elif credit <= 7:  # 5% de juros
+                    print(f'Sera cobrado \033[35m5%\033[m de juros e agora sua compra tem o valor total de'
+                          f'\033[35m R${sum_total(self)+(sum_total(self) * 5 / 100 )} \033[m'
+                          f'\nE a parcela de sua compra sera de: \033[35mR${(sum_total(self)+sum_total(self) * 5 / 100)/credit:.2f}\033[m'
+                          '\n\033[34mO seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
 
-                elif credit > 10:  # 10% de juros
-                    print(f'Sera cobrado \033[35m 10% \033[m de juros e agora sua compra tem o valor total de'
-                          f'\033[35m R${sum_total(self)+(sum_total(self) * 10 / 100 )} \033[m')
-                    print(
-                        '\033[34m O seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce"!\033[m')
+                elif credit >= 10:  # 10% de juros
+                    print(f'Sera cobrado \033[35m10%\033[m de juros e agora sua compra tem o valor total de'
+                          f'\033[35m R${sum_total(self)+(sum_total(self) * 10 / 100 )} \033[m'
+                          f'\nE a parcela de sua compra sera de: \033[35mR${(sum_total(self)-sum_total(self) * 10 / 100)/credit:.2f}\033[m'
+                          '\n\033[34mO seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
 
 
-def sum_total(self):
+def sum_total(self):  # Valor total do carrinho
     carrinho = self.purchases['Cart Items']
     total = 0
     total = sum(map(lambda
