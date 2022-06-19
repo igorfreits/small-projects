@@ -1,7 +1,13 @@
+from random import randint
+from datetime import datetime
+
+
 class Cart:
+    print(f'{"Geek Commerce":-^40}')
+
     def __init__(self):
         self.purchases = {}  # carrinho de compras{Produto:valor}
-        
+
     def insect_products(self, compras, price):
         # adiciona itens e preços no carrinho
         if 'Cart Items' not in self.purchases:
@@ -19,6 +25,17 @@ class Cart:
             # itens do carrinho
             f'O seu carrinho contem \033[32m{len(self.purchases["Cart Items"])}\033[m itens'
             f' e ele tem um valor total de: \033[32mR${sum_total(self)}\033[m')  # valor total do carrinho
+        return self.list_cart
+
+    def note(self):
+        # emissão da nota fiscal
+        with open('note.txt', 'w+')as file:
+            file.write(f'{"Geek Commerce":-^40}'
+                       f'\n {"Cupom fiscal":-^40}'
+                       # Código gerado aleatoriamente
+                       f'\n CODE {randint(0,100)} - '
+                       # Data atual, hora atual
+                       f'{datetime.today().strftime("%d/%m/%Y - %H:%M:%S")}\n')
 
     def payment(self):  # Pagamento em dinheiro e credito
         payment = int(input(f'Valor total do carrinho: \033[32mR${sum_total(self)}\033[m'

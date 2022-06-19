@@ -1,7 +1,6 @@
-from Functions import pay  # importa o arquivo Function que contem as classes e funções
-from random import randint
-from datetime import datetime
-print(f'{"Geek Commerce":-^40}')
+from Functions import pay
+# importa o arquivo Function que contem as classes e funções
+
 
 while True:
     options1 = int(input('Seja bem-vindo a Geek Commerce'
@@ -39,13 +38,3 @@ while True:
             else:
                 pay.payment()
                 break
-
-# emissão da nota fiscal
-with open('note.txt', 'w+')as file:
-    file.write(f'{"Geek Commerce":-^40}'
-               f'\n {"Cupom fiscal":-^40}'
-               f'\n CODE {randint(0,100)} - '  # Código gerado aleatoriamente
-               # Data atual, hora atual
-               f'{datetime.today().strftime("%d/%m/%Y - %H:%M:%S")}')
-
-    file.write(f'{lista}')
