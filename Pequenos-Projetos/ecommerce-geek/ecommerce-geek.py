@@ -20,6 +20,7 @@ class Cart:
 
         for a, (b, c) in enumerate(carrinho.items()):
             print(f'\033[34m Item Code {a} - {b} = R${c}\033[m')
+            return self.list_cart, carrinho
 
         print(
             # itens do carrinho
@@ -86,19 +87,23 @@ class Cart:
 
 def note(self):
     # emissão da nota fiscal
-
     carrinho = self.purchases['Cart Items']
-    a = []
-    for x, y in carrinho.items():
-        a.append(x, '..........R$', y)
+
+    for x, y in carrinho:
+        x, y
+
     with open('note.txt', 'w+')as file:
+
         file.write(f'{"Geek Commerce":-^40}'
                    f'\n {"Cupom fiscal":-^40}'
                    # Código gerado aleatoriamente
-                   f'\n CODE {randint(0,100)} - '
+                   f'\nCODE {randint(0,100)} - '
                    # Data atual, hora atual
                    f'{datetime.today().strftime("%d/%m/%Y - %H:%M:%S")}\n'
-                   f'{a}')
+
+                   f'item - {x}...............R${y}\n'
+                   f'{self.list_cart()}'
+                   f'total - {sum_total(self):>30}')
 
 
 def sum_total(self):  # Valor total do carrinho
