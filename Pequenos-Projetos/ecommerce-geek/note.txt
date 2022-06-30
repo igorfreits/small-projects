@@ -1,4 +1,10 @@
 -------------Geek Commerce--------------
  --------------Cupom fiscal--------------
-CODE 77 - 30/06/2022 - 00:03:40
-Nonetotal -                         1999.0
+CODE 61 - 30/06/2022 - 13:32:57
+
+Item Code 0 - A = R$2
+
+Item Code 1 - B = R$500
+
+Total: 502.0
+None

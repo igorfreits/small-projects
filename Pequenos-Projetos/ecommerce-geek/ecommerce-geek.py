@@ -1,5 +1,6 @@
 from random import randint
 from datetime import datetime
+import re
 
 
 class Cart:
@@ -20,7 +21,6 @@ class Cart:
 
         for a, (b, c) in enumerate(carrinho.items()):
             print(f'\033[34m Item Code {a} - {b} = R${c}\033[m')
-            return self.list_cart, carrinho
 
         print(
             # itens do carrinho
@@ -57,6 +57,7 @@ class Cart:
                     print(
                         '\033[34m O seu pagamento foi um sucesso, obrigado pro comprar na "Geek Commerce!\033[m')
                     note(self)
+
             case 2:
                 credit = int(input('Em quantas vezes voce quer parcela? '))
                 print(
@@ -87,23 +88,17 @@ class Cart:
 
 def note(self):
     # emissão da nota fiscal
-    carrinho = self.purchases['Cart Items']
-
-    for x, y in carrinho:
-        x, y
-
+    z = self.purchases['Cart Items']
     with open('note.txt', 'w+')as file:
-
         file.write(f'{"Geek Commerce":-^40}'
                    f'\n {"Cupom fiscal":-^40}'
                    # Código gerado aleatoriamente
                    f'\nCODE {randint(0,100)} - '
                    # Data atual, hora atual
-                   f'{datetime.today().strftime("%d/%m/%Y - %H:%M:%S")}\n'
-
-                   f'item - {x}...............R${y}\n'
-                   f'{self.list_cart()}'
-                   f'total - {sum_total(self):>30}')
+                   f'{datetime.today().strftime("%d/%m/%Y - %H:%M:%S")}\n')
+        for a, (b, c) in enumerate(z.items()):
+            file.write(f'\nItem Code {a} - {b} = R${c}')
+        file.write(f'\nTotal: {sum_total(self)}')
 
 
 def sum_total(self):  # Valor total do carrinho
