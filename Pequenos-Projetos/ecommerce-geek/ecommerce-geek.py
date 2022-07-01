@@ -1,6 +1,5 @@
 from random import randint
 from datetime import datetime
-import re
 
 
 class Cart:
