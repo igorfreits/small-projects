@@ -1,6 +1,6 @@
 import emoji
 
-a = emoji.emojize(':parking:', use_aliases=True)
+a = emoji.emojize(':parking:')
 b = emoji.emojize(':carro_se_aproximando:', language='pt')
 c = emoji.emojize(':gráfico_subindo:', language='pt')
 d = emoji.emojize(':proibido:', language='pt')
@@ -20,3 +20,16 @@ while True:
                        f'\033[32m \n4 -{e}  Sair \033[m'
 
                        f'\n\nDigite a opção desejada: '))
+
+
+vagas = {
+    {'vagas': 1,
+     'local': 'ocupado', 'carro': 'Chevette', 'placa': 'ABC-1234'},
+
+    {'vagas': 2,
+     'local': 'ocupado', 'carro': 'Celta', 'placa': 'ABC-1235'},
+
+    {'vagas': 3,
+     'local': 'disponível', 'carro': '', 'placa': ''},
+
+}

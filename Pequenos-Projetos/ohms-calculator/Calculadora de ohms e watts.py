@@ -7,7 +7,8 @@ msg = (input('Qual calculo voce gostaria de fazer? '
 if msg == '1':
     print('\033[0;36m Voce escolheu calcular os ohms! \033[m')
     volts1 = int(input('Digite a voltagem: '))
-    comp1 = int((input('Digite o comprimento da peca em \033[0;31m MM \033[m: ')))
+    comp1 = int(
+        (input('Digite o comprimento da peca em \033[0;31m MM \033[m: ')))
     compm = int(comp1 / 1000)
     w1 = float((input('Digite a potencia: ')))
     potencia = int(input('Qual o tipo de watts?'
@@ -41,4 +42,3 @@ elif msg == '2':
           f' com cerca de \033[0;31m{watts_metro:.2f} W/M \033[m')
 else:
     print("\033[0;36m Tecnolatina s2 \033[m")
-    
