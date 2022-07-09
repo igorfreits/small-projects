@@ -1,35 +1,31 @@
-import emoji
-
-a = emoji.emojize(':parking:')
-b = emoji.emojize(':carro_se_aproximando:', language='pt')
-c = emoji.emojize(':gráfico_subindo:', language='pt')
-d = emoji.emojize(':proibido:', language='pt')
-e = emoji.emojize(':botão_de_xis:', language='pt')
-f = emoji.emojize(':mapa-múndi:', language='pt')
+from data import emoji1, emoji2, emoji3, emoji4, emoji5, emoji6
+from functions import teste
 
 
 while True:
     option = int(input(f'\033[34m{"BEM VINDO AO PARKING ISTOP":-^40}'"\n"
                        f'{"Menu inicial":-^40}\033[m'
 
-                       f'\n1 -{b}  Adicionar veiculo'
-                       f'\033[31m \n2 -{f}   Remover veiculo \033[m'
-                       f'\033[34m \n3 -{a}   Vagas \033[m'
-                       f'\n3 -{c}  Relatório'
-                       f'\n4 -{d}  Liberar todos as vagas'
-                       f'\033[32m \n4 -{e}  Sair \033[m'
+                       f'\n1 -{emoji2}  Adicionar veiculo'
+                       f'\033[31m \n2 -{emoji6}   Remover veiculo \033[m'
+                       f'\033[34m \n3 -{emoji1}   Vagas \033[m'
+                       f'\n4 -{emoji3}  Relatório'
+                       f'\n5 -{emoji4}  Liberar todos as vagas'
+                       f'\033[32m \n6 -{emoji5}  Sair \033[m'
 
                        f'\n\nDigite a opção desejada: '))
+    match option:
+        case 1:
+            car = str(input('Digite o nome do carro: '))
+            teste.adicionar_carro(car)
+        case 2:
+            teste.remover_carro()
 
-
-vagas = {
-    {'vagas': 1,
-     'local': 'ocupado', 'carro': 'Chevette', 'placa': 'ABC-1234'},
-
-    {'vagas': 2,
-     'local': 'ocupado', 'carro': 'Celta', 'placa': 'ABC-1235'},
-
-    {'vagas': 3,
-     'local': 'disponível', 'carro': '', 'placa': ''},
-
-}
+        case 3:
+            teste.vagas()
+        case 4:
+            teste.relatorio()
+        case 5:
+            teste.liberar()
+        case 6:
+            break

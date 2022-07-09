@@ -5,11 +5,11 @@ import plotly.express as px
 import pandas as pd
 
 tabela = pandas.read_csv(
-    r"C:\Users\Igor\Desktop\Estudos\Programação em Python\Hashtag Treinamentos\Base de dados hastag\Telecom_users.csv")
+    r"C:\Users\Igor\Desktop\Python\Dungeons-e-Codes\Hashtag Treinamentos\Base de dados hastag\Telecom_users.csv")
 print(tabela)
 
 # O que não tSe ajuda te atrapalha
-# axis = 0 --> linha
+# axis = 0 --> linhaclear
 # axis = 1 __> coluna
 tabela = tabela.drop('Unnamed: 0', axis=1)
 print(tabela)

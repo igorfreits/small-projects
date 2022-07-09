@@ -5,12 +5,11 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib
-import sklearn
-import seaborn
+
 
 import pandas as pd
 tabela = pd.read_csv(
-    r'C:\Users\Igor\Desktop\Estudos\Programação em Python\Hashtag Treinamentos\Base de dados hastag\advertising.csv')
+    r'C:\Users\Igor\Desktop\Python\Dungeons-e-Codes\Hashtag Treinamentos\Base de dados hastag\advertising.csv')
 print(tabela)
 sns.heatmap(tabela.corr(), cmap='Wistia', annot=True)
 plt.show()
