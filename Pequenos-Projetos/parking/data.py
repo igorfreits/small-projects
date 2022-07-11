@@ -22,6 +22,3 @@ emoji3 = emojize(':gráfico_subindo:', language='pt')
 emoji4 = emojize(':proibido:', language='pt')
 emoji5 = emojize(':botão_de_xis:', language='pt')
 emoji6 = emojize(':mapa-múndi:', language='pt')
-
-print(c)
-print(c)
