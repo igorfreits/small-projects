@@ -16,7 +16,7 @@ while True:
                        f'\n\nDigite a opção desejada: '))
     match option:
         case 1:
-            car = str(input('Digite o nome do carro: '))
+            car = str(input('Digite o nome do carro: ')).upper().strip()
             teste.adicionar_carro(car)
         case 2:
             teste.remover_carro()
