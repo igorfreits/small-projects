@@ -48,7 +48,6 @@ class estacionamento:
                     print(
                         f'\033[32m{"Seu carro foi adicionado na vaga 2":-^40}'
                         '\033[m')
-
         else:
             print(f'\033[31m{"Nome de carro invalido":-^40}\033[m')
             sleep(1)
@@ -109,3 +108,29 @@ class estacionamento:
 
 
 teste = estacionamento()
+
+
+vaga = {
+    'parking1': {'Vaga': 1, 'Status': 'Livre',
+                 'Carro': None, 'Placa': None},
+    'parking2': {'Vaga': 2, 'Status': 'Livre',
+                 'Carro': None, 'Placa': None},
+    'parking3': {'Vaga': 3, 'Status': 'Livre',
+                 'Carro': None, 'Placa': None},
+    # 'parking4': {'Vaga': 4, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking5': {'Vaga': 5, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking6': {'Vaga': 6, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking7': {'Vaga': 7, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking8': {'Vaga': 8, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking9': {'Vaga': 9, 'Status': 'Livre',
+    #              'Carro': None, 'Placa': None},
+    # 'parking10': {'Vaga': 10, 'Status': 'Livre',
+    #               'Carro': None, 'Placa': None},
+}
+
+print(len(vaga))

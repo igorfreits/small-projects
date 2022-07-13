@@ -1,5 +1,5 @@
 from data import emoji1, emoji2, emoji3, emoji4, emoji5, emoji6
-from functions import teste
+from functions1 import teste
 
 
 while True:
@@ -20,7 +20,6 @@ while True:
             teste.adicionar_carro(car)
         case 2:
             teste.remover_carro()
-
         case 3:
             teste.vagas()
         case 4:
