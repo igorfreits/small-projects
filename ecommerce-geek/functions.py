@@ -109,4 +109,3 @@ def sum_total(self):  # Valor total do carrinho
 
 
 pay = Cart()  # Chama a classe Cart
-    
