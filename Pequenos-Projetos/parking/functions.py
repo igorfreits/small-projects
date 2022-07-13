@@ -1,18 +1,35 @@
 from data import lista_de_carros, gerador
 from time import sleep
+from datetime import datetime
 
 
 class estacionamento:
     def __init__(self):
 
-        self.a1 = {'Vaga': 1, 'Status': 'Livre',
-                   'Carro': None, 'Placa': None}
-
-        self.a2 = {'Vaga': 2, 'Status': 'Livre',
-                   'Carro': None, 'Placa': None}
-
-        self.a3 = {'Vaga': 3, 'Status': 'Livre',
-                   'Carro': None, 'Placa': None}
+        self.vaga = {
+            'parking1': {'Vaga': 1, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking2': {'Vaga': 2, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking3': {'Vaga': 3, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking4': {'Vaga': 4, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking5': {'Vaga': 5, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking6': {'Vaga': 6, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking7': {'Vaga': 7, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking8': {'Vaga': 8, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking9': {'Vaga': 9, 'Status': 'Livre',
+                         'Carro': None, 'Placa': None},
+            'parking10': {'Vaga': 10, 'Status': 'Livre',
+                          'Carro': None, 'Placa': None},
+        }
+        self.money = 0
+        self.entrada = 0
 
     def adicionar_carro(self, carro, placa=None):
         placa = gerador()
@@ -20,117 +37,75 @@ class estacionamento:
         self.placa = placa
 
         if self.carro in lista_de_carros:
+            for x in range(1, len(self.vaga)+1):
 
-            if 'Ocupado' in self.a1['Status'] and 'Ocupado' in self.a2['Status']:
-                if self.a3['Status'] == 'Livre':
-                    self.a3['Carro'] = self.carro
-                    self.a3['Placa'] = self.placa
-                    self.a3['Status'] = 'Ocupado'
+                if self.vaga[f'parking{x}']['Status'] == 'Livre':
+                    self.vaga[f'parking{x}']['Status'] = 'Ocupado'
+                    self.vaga[f'parking{x}']['Carro'] = self.carro
+                    self.vaga[f'parking{x}']['Placa'] = self.placa
                     print(
-                        f'\033[32m{"Seu carro foi adicionado na vaga 3":-^40}'
-                        '\033[m')
-                else:
-                    print(f'\033[31m{"Estacionamento lotado!":-^40}\033[m')
-
-            if self.a1['Status'] == 'Livre':
-                self.a1['Carro'] = self.carro
-                self.a1['Placa'] = self.placa
-                self.a1['Status'] = 'Ocupado'
+                        f"\033[32m{'A vaga ':->20}{x}{' foi ocupada':-<19}\033[m")
+                    x = len(self.vaga)
+                    self.money += 10.0
+                    self.entrada += 1
+                    break
+            else:
                 print(
-                    f'\033[32m{"Seu carro foi adicionado na vaga 1":-^40}'
-                    '\033[m')
-
-            elif 'Ocupado' in self.a1['Status']:
-                if self.a2['Status'] == 'Livre':
-                    self.a2['Carro'] = self.carro
-                    self.a2['Placa'] = self.placa
-                    self.a2['Status'] = 'Ocupado'
-                    print(
-                        f'\033[32m{"Seu carro foi adicionado na vaga 2":-^40}'
-                        '\033[m')
+                    f'\033[31m{"Todas as vagas estão ocupadas":-^40}\033[m')
+                sleep(0.5)
         else:
-            print(f'\033[31m{"Nome de carro invalido":-^40}\033[m')
+            print(
+                f'\033[31m{"Nome de carro invalido":-^40}\033[m')
             sleep(1)
 
     def vagas(self):
-        for x, y in self.a1.items():
-            print(f'{x}-\033[35m{y}\033[m')
-        print()
-
-        for x, y in self.a2.items():
-            print(f'{x}-\033[36m{y}\033[m')
-        print()
-
-        for x, y in self.a3.items():
-            print(f'{x}-\033[33m{y}\033[m ')
-        print()
-        sleep(3)
+        a = 1
+        while a <= len(self.vaga):
+            for x, y in self.vaga[f'parking{a}'].items():
+                print(f"{x}-\033[35m{y}\033[m")
+            print()
+            a += 1
+        else:
+            sleep(2)
 
     def remover_carro(self, vaga=0):
-        self.vagas()
-        sleep(1)
-        vaga = int(
-            input('Digite o nome da vaga que você quer remover o carro: '))
-
-        if vaga == 1:
-            self.a1['Status'] = 'Livre'
-            self.a1['Carro'] = None
-            self.a1['Placa'] = None
-            print(f'\033[32m{"Vaga 1 liberada":-^40}\033[m')
-        if vaga == 2:
-            self.a2['Status'] = 'Livre'
-            self.a2['Carro'] = None
-            self.a2['Placa'] = None
-            print(f'\033[32m{"Vaga 2 liberada":-^40}\033[m')
-        if vaga == 3:
-            self.a3['Status'] = 'Livre'
-            self.a3['Carro'] = None
-            self.a3['Placa'] = None
-            print(f'\033[32m{"Vaga 3 liberada":-^40}\033[m')
+        for x in range(1, len(self.vaga)+1):
+            if self.vaga[f'parking{x}']['Status'] == 'Ocupado':
+                self.vagas()
+                sleep(2)
+                remover = str(
+                    input('Digite o nome da vaga que você quer remover o carro: '))
+                if remover:
+                    self.vaga[f'parking{remover}']['Status'] = 'Livre'
+                    self.vaga[f'parking{remover}']['Carro'] = None
+                    self.vaga[f'parking{remover}']['Placa'] = None
+                    print(
+                        f"\033[32m{'Vaga ':->20}{remover}{' liberada':-<19}\033[m")
+                    break
+        else:
+            print(
+                f'\033[32m{"Todas as vagas estão Livres!":-^40}\033[m')
 
     def liberar(self):
-        self.a1['Status'] = 'Livre'
-        self.a1['Carro'] = None
-        self.a1['Placa'] = None
-
-        self.a2['Status'] = 'Livre'
-        self.a2['Carro'] = None
-        self.a2['Placa'] = None
-
-        self.a3['Status'] = 'Livre'
-        self.a3['Carro'] = None
-        self.a3['Placa'] = None
-
+        for x in range(1, len(self.vaga)+1):
+            self.vaga[f'parking{x}']['Status'] = 'Livre'
+            self.vaga[f'parking{x}']['Carro'] = None
+            self.vaga[f'parking{x}']['Placa'] = None
         print(f'{"Todas as vagas foram liberadas!":-^40}')
 
     def relatorio(self):
-        print(f'{"Finge que aparece vários gráficos aqui":-^40}')
+        if self.money == 0:
+            print(f'\033[31m{"Não a dinheiro no caixa":-^40}\033[m')
+        else:
+            date = datetime.now()
+            print(
+                f'\033[32m{"Relatório de estacionamento":-^40}\033[m\n'
+
+                f'\n\033[1m-Data e hora atual: {date.strftime("%d/%m/%Y - %H:%M:%S")}\033[m\n'
+
+                f'\033[1m-Total de dinheiro recebido: R${self.money}\033[m\n'
+
+                f'\033[1m-Total de carros estacionados: {self.entrada}\033[m\n')
 
 
 teste = estacionamento()
-
-
-vaga = {
-    'parking1': {'Vaga': 1, 'Status': 'Livre',
-                 'Carro': None, 'Placa': None},
-    'parking2': {'Vaga': 2, 'Status': 'Livre',
-                 'Carro': None, 'Placa': None},
-    'parking3': {'Vaga': 3, 'Status': 'Livre',
-                 'Carro': None, 'Placa': None},
-    # 'parking4': {'Vaga': 4, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking5': {'Vaga': 5, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking6': {'Vaga': 6, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking7': {'Vaga': 7, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking8': {'Vaga': 8, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking9': {'Vaga': 9, 'Status': 'Livre',
-    #              'Carro': None, 'Placa': None},
-    # 'parking10': {'Vaga': 10, 'Status': 'Livre',
-    #               'Carro': None, 'Placa': None},
-}
-
-print(len(vaga))

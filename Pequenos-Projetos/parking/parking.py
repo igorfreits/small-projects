@@ -1,5 +1,5 @@
 from data import emoji1, emoji2, emoji3, emoji4, emoji5, emoji6
-from functions1 import teste
+from functions import teste
 
 
 while True:
