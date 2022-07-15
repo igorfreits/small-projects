@@ -21,21 +21,29 @@ navegador.get(
     'https://tecnolatina365.sharepoint.com/sites/PedidosdeVenda5/Lists/Pedidos%20de%20Venda/Agrupado%20Status.aspx')
 
 time.sleep(1)
-navegador.find_element(By.XPATH, '//*[@id="i0116"]').send_keys('qualidade@tecnolatina.com.br')
+navegador.find_element(
+    By.XPATH, '//*[@id="i0116"]').send_keys('qualidade@tecnolatina.com.br')
 navegador.find_element(By.XPATH, '//*[@id="idSIButton9"]').click()
 time.sleep(1)
 navegador.find_element(By.XPATH, '//*[@id="i0118"]').send_keys('Tcl@2021')
 navegador.find_element(By.XPATH, '//*[@id="idSIButton9"]').click()
 time.sleep(1)
 navegador.find_element(By.XPATH, '//*[@id="idSIButton9"]').click()
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'v')
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'v')
 time.sleep(1)
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'a')
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'c')
-navegador.find_element(By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.ENTER)
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.BACKSPACE)
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'a')
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.CONTROL + 'c')
+navegador.find_element(
+    By.XPATH, '//*[@id="sbcId"]/form/input').send_keys(Keys.ENTER)
 
 time.sleep(5)
 pyautogui.doubleClick(x=735, y=484)
