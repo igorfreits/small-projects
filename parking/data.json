@@ -1,0 +1,28 @@
+{
+    "User0": {
+        "Nome": "",
+        "CPF": "",
+        "Telefone": "",
+        "Carro": "",
+        "Placa": "",
+        "Status": "Offline"
+    }
+}{
+    "User0": {
+        "Nome": "IGOR",
+        "CPF": "68666511828",
+        "Telefone": "993126665",
+        "Carro": "CELTA",
+        "Placa": "DJQN-219",
+        "Status": "Online"
+    }
+}{
+    "User0": {
+        "Nome": "",
+        "CPF": "",
+        "Telefone": "",
+        "Carro": "",
+        "Placa": "",
+        "Status": "Offline"
+    }
+}

@@ -1,4 +1,4 @@
-from data import lista_de_carros, gerador
+from data import lista_de_carros, placa_generate, cpf_generate, telefone_generate
 from time import sleep
 from datetime import datetime
 
@@ -7,38 +7,55 @@ class estacionamento:
     def __init__(self):
 
         self.vaga = {
-            'parking1': {'Vaga': 1, 'Status': 'Livre',
+            'parking1': {'Vaga': 1, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking2': {'Vaga': 2, 'Status': 'Livre',
+            'parking2': {'Vaga': 2, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking3': {'Vaga': 3, 'Status': 'Livre',
+            'parking3': {'Vaga': 3, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking4': {'Vaga': 4, 'Status': 'Livre',
+            'parking4': {'Vaga': 4, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking5': {'Vaga': 5, 'Status': 'Livre',
+            'parking5': {'Vaga': 5, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking6': {'Vaga': 6, 'Status': 'Livre',
+            'parking6': {'Vaga': 6, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking7': {'Vaga': 7, 'Status': 'Livre',
+            'parking7': {'Vaga': 7, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking8': {'Vaga': 8, 'Status': 'Livre',
+            'parking8': {'Vaga': 8, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking9': {'Vaga': 9, 'Status': 'Livre',
+            'parking9': {'Vaga': 9, 'Nome': None, 'CPF': None,
+                         'Telefone': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking10': {'Vaga': 10, 'Status': 'Livre',
-                          'Carro': None, 'Placa': None},
+            'parking10': {'Vaga': 10, 'Nome': None, 'CPF': None,
+                          'Telefone': None, 'Status': 'Livre',
+                          'Carro': None, 'Placa': None}
+
+
         }
         self.money = 0
         self.entrada = 0
 
-    def adicionar_carro(self, carro, placa=None):
-        placa = gerador()
+    def adicionar_carro(self, nome, carro, placa=None, cpf=None, telefone=None):
+        placa = placa_generate()
+        cpf = cpf_generate()
+        telefone = telefone_generate()
+
+        self.nome = nome
         self.carro = carro
         self.placa = placa
+        self.cpf = cpf
+        self.telefone = telefone
 
         if self.carro in lista_de_carros:
             for x in range(1, len(self.vaga)+1):
-
                 if self.vaga[f'parking{x}']['Status'] == 'Livre':
                     self.vaga[f'parking{x}']['Status'] = 'Ocupado'
                     self.vaga[f'parking{x}']['Carro'] = self.carro
@@ -93,7 +110,7 @@ class estacionamento:
             self.vaga[f'parking{x}']['Placa'] = None
         print(f'{"Todas as vagas foram liberadas!":-^40}')
 
-    def relatorio(self):
+    def relatorio_parking(self):
         if self.money == 0:
             print(f'\033[31m{"Não a dinheiro no caixa":-^40}\033[m')
         else:
@@ -108,4 +125,4 @@ class estacionamento:
                 f'\033[1m-Total de carros estacionados: {self.entrada}\033[m\n')
 
 
-teste = estacionamento()
+a = estacionamento()
