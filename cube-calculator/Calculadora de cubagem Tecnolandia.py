@@ -81,6 +81,6 @@ janela = Tk()
 
 janela.title('Cubagem Tecnolatina')
 
-texto_orientação = Labe(janela, text='')
+texto_orientação = Label(janela, text='')
 
-janela.mainloop()  
+janela.mainloop()
