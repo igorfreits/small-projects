@@ -1,4 +1,4 @@
-from data import lista_de_carros, placa_generate, cpf_generate, telefone_generate
+from data import lista_de_carros, placa_generate, cpf_generate, id
 from time import sleep
 from datetime import datetime
 
@@ -8,72 +8,68 @@ class estacionamento:
 
         self.vaga = {
             'parking1': {'Vaga': 1, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
+                         'ID': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
             'parking2': {'Vaga': 2, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
+                         'ID': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
             'parking3': {'Vaga': 3, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
+                         'ID': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
-            'parking4': {'Vaga': 4, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking5': {'Vaga': 5, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking6': {'Vaga': 6, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking7': {'Vaga': 7, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking8': {'Vaga': 8, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking9': {'Vaga': 9, 'Nome': None, 'CPF': None,
-                         'Telefone': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
-            'parking10': {'Vaga': 10, 'Nome': None, 'CPF': None,
-                          'Telefone': None, 'Status': 'Livre',
-                          'Carro': None, 'Placa': None}
+            # 'parking4': {'Vaga': 4, 'Nome': None, 'CPF': None,
+            #              'ID': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking5': {'Vaga': 5, 'Nome': None, 'CPF': None,
+            #              'ID': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking6': {'Vaga': 6, 'Nome': None, 'CPF': None,
+            #              'ID': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking7': {'Vaga': 7, 'Nome': None, 'CPF': None,
+            #              'ID': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking8': {'Vaga': 8, 'Nome': None, 'CPF': None,
+            #              'Id': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking9': {'Vaga': 9, 'Nome': None, 'CPF': None,
+            #              'Id': None, 'Status': 'Livre',
+            #              'Carro': None, 'Placa': None},
+            # 'parking10': {'Vaga': 10, 'Nome': None, 'CPF': None,
+            #               'Id': None, 'Status': 'Livre',
+            #               'Carro': None, 'Placa': None}
 
 
         }
         self.money = 0
         self.entrada = 0
 
-    def adicionar_carro(self, nome, carro, placa=None, cpf=None, telefone=None):
-        placa = placa_generate()
-        cpf = cpf_generate()
-        telefone = telefone_generate()
+    def adicionar_carro(self, nome, cpf, carro, placa, codigo):
 
         self.nome = nome
         self.carro = carro
         self.placa = placa
         self.cpf = cpf
-        self.telefone = telefone
+        self.id = codigo
 
-        if self.carro in lista_de_carros:
-            for x in range(1, len(self.vaga)+1):
-                if self.vaga[f'parking{x}']['Status'] == 'Livre':
-                    self.vaga[f'parking{x}']['Status'] = 'Ocupado'
-                    self.vaga[f'parking{x}']['Carro'] = self.carro
-                    self.vaga[f'parking{x}']['Placa'] = self.placa
-                    print(
-                        f"\033[32m{'A vaga ':->20}{x}{' foi ocupada':-<19}\033[m")
-                    x = len(self.vaga)
-                    self.money += 10.0
-                    self.entrada += 1
-                    break
-            else:
+        for x in range(1, len(self.vaga)+1):
+            if self.vaga[f'parking{x}']['Status'] == 'Livre':
+                self.vaga[f'parking{x}']['Status'] = 'Ocupado'
+                self.vaga[f'parking{x}']['Nome'] = self.nome
+                self.vaga[f'parking{x}']['Carro'] = self.carro
+                self.vaga[f'parking{x}']['Placa'] = self.placa
+                self.vaga[f'parking{x}']['CPF'] = self.cpf
+                self.vaga[f'parking{x}']['Id'] = self.id
+
                 print(
-                    f'\033[31m{"Todas as vagas estão ocupadas":-^40}\033[m')
-                sleep(0.5)
+                    f"\033[32m{'A vaga ':->20}{x}{' foi ocupada':-<19}\033[m")
+                x = len(self.vaga)
+                self.money += 10.0
+                self.entrada += 1
+                break
         else:
             print(
-                f'\033[31m{"Nome de carro invalido":-^40}\033[m')
-            sleep(1)
+                f'\033[31m{"Todas as vagas estão ocupadas":-^40}\033[m')
+            sleep(0.5)
 
     def vagas(self):
         a = 1
@@ -106,8 +102,11 @@ class estacionamento:
     def liberar(self):
         for x in range(1, len(self.vaga)+1):
             self.vaga[f'parking{x}']['Status'] = 'Livre'
+            self.vaga[f'parking{x}']['Nome'] = None
             self.vaga[f'parking{x}']['Carro'] = None
             self.vaga[f'parking{x}']['Placa'] = None
+            self.vaga[f'parking{x}']['CPF'] = None
+            self.vaga[f'parking{x}']['Id'] = None
         print(f'{"Todas as vagas foram liberadas!":-^40}')
 
     def relatorio_parking(self):
@@ -125,4 +124,4 @@ class estacionamento:
                 f'\033[1m-Total de carros estacionados: {self.entrada}\033[m\n')
 
 
-a = estacionamento()
+parking = estacionamento()

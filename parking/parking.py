@@ -1,5 +1,5 @@
-from data import emoji1, emoji2, emoji3, emoji4, emoji5, emoji6
-from functions import a
+from data import emoji1, emoji2, emoji3, emoji4, emoji5, emoji6, emoji7, emoji8, emoji9, emoji10
+from functions import parking
 from clientes import register, user
 
 
@@ -14,37 +14,34 @@ while True:
                        f'\n5 -{emoji4}  Liberar todos as vagas'
                        f'\033[32m \n6 -{emoji5}  Sair \033[m'
 
-                       f'\n\nDigite a opção desejada: '))
+                       f'\n\n-Digite a opção desejada: '))
     match option:
         case 1:
             option = int(input('Escolha uma opção: \n'
-                         '\n[ 1 ] Inserir dados'
-                               '\n[ 2 ] Em breve...'
-                               '\n... '))
-            if option == 1:
-                nome = str(input('Digite seu nome: '))
-                car = str(input('Digite o nome do carro: '))
+                         f'\033[35m\n1 -{emoji7} Entrar no estacionamento\033[m'
+                               f'\n2 -{emoji8} Realizar um novo cadastro.'
+                               '\n\n-Digite a opção desejada: '))
 
-                a.adicionar_carro(nome, car)
+            if option == 1:
+                user.login()
 
             if option == 2:
-                pass
-                # register.novo_cadastro()
+                register.novo_cadastro()
 
         case 2:
-            a.remover_carro()
+            parking.remover_carro()
         case 3:
-            a.vagas()
+            parking.vagas()
         case 4:
-            option = int('Deseja ver que qual relatório?'
-                         '\n[ 1 ] Usuários cadastrados(Haverá melhoria no sistema)'
-                         '\n[ 2 ] Relatório do dia')
+            option = int(input('Deseja ver que qual relatório?'
+                         f'\n1 -{emoji9} Usuários cadastrados'
+                               f'\033[32m\n2 -{emoji10} Relatório do dia\033[m'
+                               '\n\n-Digite a opção desejada: '))
             if option == 1:
-                pass
-                # user.relatorio_clientes()
+                user.relatorio_clientes()
             if option == 2:
-                a.relatorio_parking()
+                parking.relatorio_parking()
         case 5:
-            a.liberar()
+            parking.liberar()
         case 6:
             break
