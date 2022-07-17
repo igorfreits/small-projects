@@ -5,8 +5,10 @@ from emoji import emojize,  demojize
 
 
 lista_de_carros = ['CELTA', 'UNO', 'CAMARO', 'VERONA', 'CORSA', 'GOL', 'PALIO',
-                   'FUSCA', 'FIESTA', 'FOX', 'UP']
-#lista com 50 carros de luxo
+                   'FUSCA', 'FIESTA', 'FOX', 'UP', 'GOLF', 'CIVIC', 'CRUZE', 'ONIX', 'PUNTO',
+                   'HB20', 'KIA', 'SANDERO', 'RENEGADE', 'COROLLA', 'POLO', 'HILUX', 'S10',
+                   'CHIRON', 'VENENO', 'TUATARA', 'IDEA', '250GTO']
+
 
 emoji1 = emojize(':parking:', use_aliases=True)
 emoji2 = emojize(':carro_se_aproximando:', language='pt')
