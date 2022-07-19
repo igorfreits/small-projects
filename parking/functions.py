@@ -9,7 +9,8 @@ class estacionamento:
         self.vaga = {
             'parking1': {'Vaga': 1, 'Nome': None, 'CPF': None,
                          'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None},
+                         'Carro': None, 'Placa': None,
+                         'Entrada': None, 'Saida': None},
             'parking2': {'Vaga': 2, 'Nome': None, 'CPF': None,
                          'ID': None, 'Status': 'Livre',
                          'Carro': None, 'Placa': None},
@@ -58,7 +59,7 @@ class estacionamento:
                 self.vaga[f'parking{x}']['Carro'] = self.carro
                 self.vaga[f'parking{x}']['Placa'] = self.placa
                 self.vaga[f'parking{x}']['CPF'] = self.cpf
-                self.vaga[f'parking{x}']['Id'] = self.id
+                self.vaga[f'parking{x}']['ID'] = self.id
 
                 print(
                     f"\033[32m{'A vaga ':->20}{x}{' foi ocupada':-<19}\033[m")
@@ -92,6 +93,9 @@ class estacionamento:
                     self.vaga[f'parking{remover}']['Status'] = 'Livre'
                     self.vaga[f'parking{remover}']['Carro'] = None
                     self.vaga[f'parking{remover}']['Placa'] = None
+                    self.vaga[f'parking{remover}']['Nome'] = None
+                    self.vaga[f'parking{remover}']['CPF'] = None
+                    self.vaga[f'parking{remover}']['ID'] = None
                     print(
                         f"\033[32m{'Vaga ':->20}{remover}{' liberada':-<19}\033[m")
                     break
@@ -106,7 +110,7 @@ class estacionamento:
             self.vaga[f'parking{x}']['Carro'] = None
             self.vaga[f'parking{x}']['Placa'] = None
             self.vaga[f'parking{x}']['CPF'] = None
-            self.vaga[f'parking{x}']['Id'] = None
+            self.vaga[f'parking{x}']['ID'] = None
         print(f'{"Todas as vagas foram liberadas!":-^40}')
 
     def relatorio_parking(self):

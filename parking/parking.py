@@ -38,7 +38,7 @@ while True:
                                f'\033[32m\n2 -{emoji10} Relatório do dia\033[m'
                                '\n\n-Digite a opção desejada: '))
             if option == 1:
-                user.relatorio_clientes()
+                register.relatorio_clientes()
             if option == 2:
                 parking.relatorio_parking()
         case 5:
