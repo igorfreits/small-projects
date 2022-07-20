@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List
 from data import placa_generate, cpf_generate
 from data import lista_de_carros, id
 from functions import parking
@@ -18,17 +19,18 @@ class Cadastro(Clientes):
         self.id = None
         self.carro = None
         self.placa = None
+        self.registers: List = []
 
     def novo_cadastro(self):
         # fazer contador pro relatorio de clientes
-        self.registers = []
+
         self.nome = str(input('Digite seu nome: ')).upper().strip()
+        self.registers.append(self.nome)
         self.cpf = cpf_generate()
         self.id = id()
         self.placa = placa_generate()
 
         car = str(input('Digite seu carro: ')).upper().strip()
-        self.registers.append(self.nome)
         if car in lista_de_carros:
             self.carro = car
         else:
@@ -45,7 +47,7 @@ class Cadastro(Clientes):
         print()
 
         print(f'\033[31m{"Novos clientes":-^40}\033[m')
-        for new in news:
+        for new in self.registers:
             print(new)
 
         print()
