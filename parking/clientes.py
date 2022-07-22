@@ -68,6 +68,7 @@ class Cadastro(Clientes):
                 clientes = json.load(f)
         except FileNotFoundError:
             clientes = {}
+            
         clientes[self.id] = {
             'Nome': self.nome,
             'CPF': self.cpf,

@@ -42,6 +42,8 @@ while True:
             if option == 2:
                 parking.relatorio_parking()
         case 5:
-            parking.liberar()
+            print('\033[31m\nEssa função precisa ser revisada!\033[m')
+            # parking.liberar()
         case 6:
+            print('\033[31m\nSaindo do programa...\033[m')
             break
