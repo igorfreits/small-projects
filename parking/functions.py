@@ -189,10 +189,12 @@ class estacionamento:
             data.append(x)
             caixa.append(relatorio[x]['Caixa'])
 
-        plt.plot(data, caixa)
-        plt.title('Caixa do Parking')
-        plt.xlabel('Data')
-        plt.ylabel('Dinheiro')
+        # Fazer grafico de barras
+        plt.bar(data, caixa)
+        plt.title('Caixa Diário do Estacionamento')
+        plt.bar(data, caixa, color='#3299CC', edgecolor='black')
+        plt.xlabel('Datas')
+        plt.ylabel('Valores R$')
         plt.show()
 
 
