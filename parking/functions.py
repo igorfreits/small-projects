@@ -92,13 +92,13 @@ class estacionamento:
             print()
             a += 1
         else:
-            sleep(2)
+            sleep(1)
 
     def remover_carro(self, vaga=0):
         for x in range(1, len(self.vaga)+1):
             if self.vaga[f'parking{x}']['Status'] == 'Ocupado':
                 self.vagas()
-                sleep(2)
+                sleep(1)
 
                 remover = str(
                     input('Digite o nome da vaga que você quer remover o carro: '))
@@ -179,7 +179,6 @@ class estacionamento:
         with open('data/relatorio.json', 'w') as f:
             json.dump(relatorio, f, indent=4)
 
-        # Fazer grafico com os dados do json
         with open('data/relatorio.json', 'r') as f:
             relatorio = json.load(f)
 
@@ -189,7 +188,6 @@ class estacionamento:
             data.append(x)
             caixa.append(relatorio[x]['Caixa'])
 
-        # Fazer grafico de barras
         plt.bar(data, caixa)
         plt.title('Caixa Diário do Estacionamento')
         plt.bar(data, caixa, color='#3299CC', edgecolor='black')
@@ -199,3 +197,6 @@ class estacionamento:
 
 
 parking = estacionamento()
+if __name__ == '__main__':
+    parking = estacionamento()
+    parking.relatorio_parking()

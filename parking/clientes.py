@@ -22,8 +22,6 @@ class Cadastro(Clientes):
         self.registers: List = []
 
     def novo_cadastro(self):
-        # fazer contador pro relatorio de clientes
-
         self.nome = str(input('Digite seu nome: ')).upper().strip()
         self.registers.append(self.nome)
         self.cpf = cpf_generate()
@@ -33,16 +31,14 @@ class Cadastro(Clientes):
         car = str(input('Digite seu carro: ')).upper().strip()
         if car in lista_de_carros:
             self.carro = car
+            self.save()
+            return self.registers
         else:
             print(
                 f'\033[31m{"Nome de carro invalido":-^40}\033[m')
             self.novo_cadastro()
 
-        self.save()
-        return self.registers
-
     def relatorio_clientes(self):
-
         print(f'\033[34m{"Relatório de clientes":-^40}\033[m')
         print()
 
@@ -68,7 +64,7 @@ class Cadastro(Clientes):
                 clientes = json.load(f)
         except FileNotFoundError:
             clientes = {}
-            
+
         clientes[self.id] = {
             'Nome': self.nome,
             'CPF': self.cpf,
