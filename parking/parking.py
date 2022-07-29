@@ -35,7 +35,7 @@ while True:
         case 4:
             option = int(input('Deseja ver que qual relatório?'
                          f'\n1 -{emoji9} Usuários cadastrados'
-                               f'\033[32m\n2 -{emoji10} Relatório do dia\033[m'
+                               f'\033[32m\n2 -{emoji10} Relatório dos meses\033[m'
                                '\n\n-Digite a opção desejada: '))
             if option == 1:
                 register.relatorio_clientes()

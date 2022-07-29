@@ -1,3 +1,4 @@
+from turtle import color
 import matplotlib.pyplot as plt
 from data import lista_de_carros, placa_generate, cpf_generate, id
 from time import sleep
@@ -172,8 +173,16 @@ class estacionamento:
                 relatorio = json.load(f)
         except FileNotFoundError:
             relatorio = {}
+        date = datetime.now()
+        meses_extenso = {1: 'Janeiro', 2: 'Fevereiro', 3: 'Março', 4: 'Abril',
+                         5: 'Maio', 6: 'Junho', 7: 'Julho', 8: 'Agosto',
+                         9: 'Setembro', 10: 'Outubro', 11: 'Novembro', 12: 'Dezembro'}
 
-        relatorio[date.strftime("%d/%m/%Y")] = {
+        for x, y in meses_extenso.items():
+            if date.month == x:
+                break
+
+        relatorio[y] = {
             'Caixa': self.money}
 
         with open('data/relatorio.json', 'w') as f:
@@ -189,9 +198,11 @@ class estacionamento:
             caixa.append(relatorio[x]['Caixa'])
 
         plt.bar(data, caixa)
-        plt.title('Caixa Diário do Estacionamento')
-        plt.bar(data, caixa, color='#3299CC', edgecolor='black')
-        plt.xlabel('Datas')
+        plt.title('Caixa Mensal do Estacionamento')
+        plt.bar(data, caixa, color=[
+                '#3299CC', '#00FF00', '#228B22', '#FFFF00',
+                '#00FFFF', '#FF00FF'], edgecolor='black')
+        plt.xlabel('2022')
         plt.ylabel('Valores R$')
         plt.show()
 
