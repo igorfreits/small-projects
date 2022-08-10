@@ -1,205 +1,191 @@
-from turtle import color
 import matplotlib.pyplot as plt
-from data import lista_de_carros, placa_generate, cpf_generate, id
 from time import sleep
 from datetime import datetime, timedelta
 from random import randint
-from typing import Dict, List
 import json
 
 
-class estacionamento:
+class Parking:
     def __init__(self):
 
-        self.vaga = {
-            'parking1': {'Vaga': 1, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking2': {'Vaga': 2, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking3': {'Vaga': 3, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking4': {'Vaga': 4, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking5': {'Vaga': 5, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking6': {'Vaga': 6, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking7': {'Vaga': 7, 'Nome': None, 'CPF': None,
-                         'ID': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking8': {'Vaga': 8, 'Nome': None, 'CPF': None,
-                         'Id': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking9': {'Vaga': 9, 'Nome': None, 'CPF': None,
-                         'Id': None, 'Status': 'Livre',
-                         'Carro': None, 'Placa': None,
-                         'Entrada': None},
-            'parking10': {'Vaga': 10, 'Nome': None, 'CPF': None,
-                          'Id': None, 'Status': 'Livre',
-                          'Carro': None, 'Placa': None,
-                          'Entrada': None}
+        self.vacancy = {
+            'parking1': {'vacancy': 1, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking2': {'vacancy': 2, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking3': {'vacancy': 3, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking4': {'vacancy': 4, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking5': {'vacancy': 5, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking6': {'vacancy': 6, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking7': {'vacancy': 7, 'name': None, 'CPF': None,
+                         'ID': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking8': {'vacancy': 8, 'name': None, 'CPF': None,
+                         'Id': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking9': {'vacancy': 9, 'name': None, 'CPF': None,
+                         'Id': None, 'Status': 'free',
+                         'car': None, 'board': None,
+                         'entry': None},
+            'parking10': {'vacancy': 10, 'name': None, 'CPF': None,
+                          'Id': None, 'Status': 'free',
+                          'car': None, 'board': None,
+                          'entry': None}
         }
         self.money = 0
-        self.entrada = 0
+        self.entry = 0
 
-    def adicionar_carro(self, nome, cpf, carro, placa, codigo):
+    def add_car(self, name, cpf, car, board, code):
 
-        self.nome = nome
-        self.carro = carro
-        self.placa = placa
+        self.name = name
+        self.car = car
+        self.board = board
         self.cpf = cpf
-        self.id = codigo
+        self.id = code
 
         data = datetime.now()
 
-        for x in range(1, len(self.vaga)+1):
-            if self.vaga[f'parking{x}']['Status'] == 'Livre':
-                self.vaga[f'parking{x}']['Status'] = 'Ocupado'
-                self.vaga[f'parking{x}']['Nome'] = self.nome
-                self.vaga[f'parking{x}']['Carro'] = self.carro
-                self.vaga[f'parking{x}']['Placa'] = self.placa
-                self.vaga[f'parking{x}']['CPF'] = self.cpf
-                self.vaga[f'parking{x}']['ID'] = self.id
-                self.vaga[f'parking{x}']['Entrada'] = data
+        for x in range(1, len(self.vacancy)+1):
+            if self.vacancy[f'parking{x}']['Status'] == 'free':
+                self.vacancy[f'parking{x}']['Status'] = 'occupied'
+                self.vacancy[f'parking{x}']['name'] = self.name
+                self.vacancy[f'parking{x}']['car'] = self.car
+                self.vacancy[f'parking{x}']['board'] = self.board
+                self.vacancy[f'parking{x}']['CPF'] = self.cpf
+                self.vacancy[f'parking{x}']['ID'] = self.id
+                self.vacancy[f'parking{x}']['entry'] = data
 
                 print(
-                    f"\033[32m{'A vaga ':->20}{x}{' foi ocupada':-<19}\033[m")
-                self.entrada += 1
+                    f"\033[32m{'vacancy ':->20}{x}{' has been occupied':-<19}\033[m")
+                self.entry += 1
                 break
         else:
             print(
-                f'\033[31m{"Todas as vagas estão ocupadas":-^40}\033[m')
+                f'\033[31m{"All vacancies are occupied":-^40}\033[m')
             sleep(0.5)
 
-    def vagas(self):
+    def vacancys(self):
         a = 1
-        while a <= len(self.vaga):
-            for x, y in self.vaga[f'parking{a}'].items():
+        while a <= len(self.vacancy):
+            for x, y in self.vacancy[f'parking{a}'].items():
                 print(f"{x}-\033[35m{y}\033[m")
             print()
             a += 1
         else:
             sleep(1)
 
-    def remover_carro(self, vaga=0):
-        for x in range(1, len(self.vaga)+1):
-            if self.vaga[f'parking{x}']['Status'] == 'Ocupado':
-                self.vagas()
+    def remove_car(self, vacancy=0):
+        for x in range(1, len(self.vacancy)+1):
+            if self.vacancy[f'parking{x}']['Status'] == 'occupied':
+                self.vacancys()
                 sleep(1)
 
-                remover = str(
-                    input('Digite o nome da vaga que você quer remover o carro: '))
-                if remover:
-                    self.vaga[f'parking{remover}']['Status'] = 'Livre'
-                    self.vaga[f'parking{remover}']['Carro'] = None
-                    self.vaga[f'parking{remover}']['Placa'] = None
-                    self.vaga[f'parking{remover}']['Nome'] = None
-                    self.vaga[f'parking{remover}']['CPF'] = None
-                    self.vaga[f'parking{remover}']['ID'] = None
+                remove = str(
+                    input('Enter the name of the vacancy you want to remove the car: '))
+                if remove:
+                    self.vacancy[f'parking{remove}']['Status'] = 'free'
+                    self.vacancy[f'parking{remove}']['car'] = None
+                    self.vacancy[f'parking{remove}']['board'] = None
+                    self.vacancy[f'parking{remove}']['name'] = None
+                    self.vacancy[f'parking{remove}']['CPF'] = None
+                    self.vacancy[f'parking{remove}']['ID'] = None
 
-                    entrada = self.vaga[f'parking{remover}']['Entrada']
+                    entry = self.vacancy[f'parking{remove}']['entry']
 
-                    saida = entrada + \
+                    exit = entry + \
                         timedelta(minutes=randint(10, 180))
 
-                    diferenca = saida - \
-                        entrada
+                    difference = exit - \
+                        entry
 
-                    tempo = diferenca.seconds // 60
+                    time = difference.seconds // 60
 
-                    if tempo <= 30:
+                    if time <= 30:
                         print(
-                            f'\033[31mVocê ficou {tempo} minutos e terá que pagar R$7\033[m')
+                            f'\033[31mYou stayed {time} minutes and will have to pay R$7\033[m')
                         self.money += 7
-                    elif tempo <= 60:
+                    elif time <= 60:
                         print(
-                            f'\033[31mVocê ficou {tempo} minutos e terá que pagar R$15\033[m')
+                            f'\033[31mYou stayed {time} minutes and will have to pay R$15\033[m')
                         self.money += 15
-                    elif tempo <= 90:
+                    elif time <= 90:
                         print(
-                            f'\033[31mVocê ficou {tempo} minutos e terá que pagar R$25\033[m')
+                            f'\033[31mYou stayed {time} minutes and will have to pay R$25\033[m')
                         self.money += 30
-                    elif tempo >= 120:
+                    elif time >= 120:
                         print(
-                            f'\033[31mVocê ficou {tempo} minutos e terá que pagar R$35\033[m')
+                            f'\033[31mYou stayed {time} minutes and will have to pay R$35\033[m')
                         self.money += 35
 
-                    self.vaga[f'parking{remover}']['Entrada'] = None
+                    self.vacancy[f'parking{remove}']['entry'] = None
 
                     print(
-                        f"\033[32m{'Vaga ':->20}{remover}{' liberada':-<19}\033[m")
+                        f"\033[32m{'vacancy ':->20}{remove}{'released':-<19}\033[m")
                     break
         else:
             print(
-                f'\033[32m{"Todas as vagas estão Livres!":-^40}\033[m')
+                f'\033[32m{"All vacancies are free!":-^40}\033[m')
 
-    def liberar(self):
-        for x in range(1, len(self.vaga)+1):
-            self.vaga[f'parking{x}']['Status'] = 'Livre'
-            self.vaga[f'parking{x}']['Nome'] = None
-            self.vaga[f'parking{x}']['Carro'] = None
-            self.vaga[f'parking{x}']['Placa'] = None
-            self.vaga[f'parking{x}']['CPF'] = None
-            self.vaga[f'parking{x}']['ID'] = None
-        print(f'{"Todas as vagas foram liberadas!":-^40}')
-
-    def relatorio_parking(self):
+    def reports(self):
         date = datetime.now()
         print(
-            f'\033[32m{"Relatório de estacionamento":-^40}\033[m\n'
+            f'\033[32m{"Parking report":-^40}\033[m\n'
 
-            f'\n\033[1m-Data e hora atual: {date.strftime("%d/%m/%Y - %H:%M:%S")}\033[m\n'
+            f'\n\033[1m-Current date and time: {date.strftime("%d/%m/%Y - %H:%M:%S")}\033[m\n'
 
-            f'\033[1m-Total de dinheiro recebido: R${self.money}\033[m\n'
+            f'\033[1m-Total money received: BRL{self.money}\033[m\n'
 
-            f'\033[1m-Total de carros estacionados: {self.entrada}\033[m\n')
-
+            f'\033[1m-Total parked cars: {self.entry}\033[m\n')
         try:
-            with open('data/relatorio.json', 'r') as f:
-                relatorio = json.load(f)
+            with open('data/report.json', 'r') as f:
+                report = json.load(f)
         except FileNotFoundError:
-            relatorio = {}
+            report = {}
         date = datetime.now()
-        meses_extenso = {1: 'Janeiro', 2: 'Fevereiro', 3: 'Março', 4: 'Abril',
-                         5: 'Maio', 6: 'Junho', 7: 'Julho', 8: 'Agosto',
-                         9: 'Setembro', 10: 'Outubro', 11: 'Novembro', 12: 'Dezembro'}
+        months_in_full = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
+                          5: 'May', 6: 'June', 7: 'July', 8: 'August',
+                          9: 'September', 10: 'October', 11: 'November', 12: 'December'}
 
-        for x, y in meses_extenso.items():
+        for x, y in months_in_full.items():
             if date.month == x:
                 break
 
-        relatorio[y] = {
-            'Caixa': self.money}
+        report[y] = {
+            'Cashier': self.money}
 
-        with open('data/relatorio.json', 'w') as f:
-            json.dump(relatorio, f, indent=4)
+        with open('data/report.json', 'w') as f:
+            json.dump(report, f, indent=4)
 
-        with open('data/relatorio.json', 'r') as f:
-            relatorio = json.load(f)
+        with open('data/report.json', 'r') as f:
+            report = json.load(f)
 
         data = []
-        caixa = []
-        for x in relatorio:
+        cashier = []
+        for x in report:
             data.append(x)
-            caixa.append(relatorio[x]['Caixa'])
+            cashier.append(report[x]['Cashier'])
 
-        plt.bar(data, caixa)
-        plt.title('Caixa Mensal do Estacionamento')
-        plt.bar(data, caixa, color=[
+        plt.bar(data, cashier)
+        plt.title('Parking Monthly Cashier')
+        plt.bar(data, cashier, color=[
                 '#3299CC', '#00FF00', '#228B22', '#FFFF00',
                 '#00FFFF', '#FF00FF'], edgecolor='black')
         plt.xlabel('2022')
@@ -207,7 +193,4 @@ class estacionamento:
         plt.show()
 
 
-parking = estacionamento()
-if __name__ == '__main__':
-    parking = estacionamento()
-    parking.relatorio_parking()
+parking = Parking()

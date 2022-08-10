@@ -1,0 +1,26 @@
+{
+    "January": {
+        "Cashier": 3250
+    },
+    "February": {
+        "Cashier": 4500
+    },
+    "March": {
+        "Cashier": 2500
+    },
+    "April": {
+        "Cashier": 3900
+    },
+    "May": {
+        "Cashier": 2340
+    },
+    "June": {
+        "Cashier": 2560
+    },
+    "July": {
+        "Cashier": 0
+    },
+    "August": {
+        "Cashier": 0
+    }
+}

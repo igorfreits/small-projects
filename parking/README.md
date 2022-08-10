@@ -1,16 +1,11 @@
 ## 📚 Parking
 
-    Nesse projeto eu criei um sistema de estacionamento com cadastro de veículos e usuários.
+    Nesse projeto foi criado um sistema de estacionamento com cadastro de veículos e usuários.
 
-    Esse projeto foi realizado com ajuda de uma network de estudos!
+    O Projeto tem o uso de "Python" com "Orientação a objetos", "JSON" para armazenagem e manipulação de dados e 
+    "Matplotlib" para geração de gráficos para relatórios.
 
-    O Projeto foi criado em "Python" com uso de "Orientação a objetos" e "JSON" para armazenar os dados.
-
-    Usando o "JSON" para conectar ao banco de dados e realizar a manipulação dos dados, "string" e "random" para gerar
-    códigos aleatórios, "datetime" para manipular datas e horas, emojize para converter textos em emoji
-
-
-
+    Todas as libs usadas: json, string, random, datetime, emoji, matplotlib, time, typing.
 ## 🚀 Começando em programação
         Atualmente com 23 anos e possuo interesse em Tecnologia desde que me lembro. Na infância, quando 
     jogava algum jogo eu pensava: "Como isso funciona?", "Por que aquilo aparece na tela?"
