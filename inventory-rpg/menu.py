@@ -13,5 +13,7 @@ while True:
             inventory.new_item()
         case 2:
             inventory.show_inventory()
+        case 3:
+            inventory.drop_item()
         case 4:
             break
