@@ -1,0 +1,49 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Pokemon</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ pokemon.name }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="{{ pokemon.image }}" class="img-responsive">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{ pokemon.description }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Type</h3>
+            <ul>
+                {% for type in pokemon.types %}
+                    <li>{{ type }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Abilities</h3>
+            <ul>
+                {% for ability in pokemon.abilities %}
+                    <li>{{ ability }}</li>
+                {% endfor %}

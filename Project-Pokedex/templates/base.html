@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/bebas" type="text/css" />
@@ -16,14 +16,22 @@
 <body>
     <main>
         <img src="./images/pokedex-img.png" alt="pokedex" class="pokedex">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">
+                                Aqui você pode encontrar todos os Pokémon da Pokédex.
+                            
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <h1 class="pokemon__name">Welcome Pokédex</h1>
 
-        <input type="text" placeholder="Number or name Pokémon">
-        
-
-
+        {% include 'parciais/_nav' %}
     </main>
 </body>
-
-        
