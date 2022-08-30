@@ -5,14 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="./static/css/style-base.css">
+    <link rel="icon" href="./static/images/pokedex-icon.png">
 </head>
 
 <body>
+    <main>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="pokemon"
+            class="pokemon_img">
 
-    {% include 'parciais/_nav.html' %}
-    <img src="../templates/images/logo-pokemon.png" alt="">
+        <h1 class="pokemon_data">
+            <span class="pokemon_number">94</span> -
+            <span class="pokemon_name">gengar</span>
+        </h1>
 
-    
+        <form class="form">
+            <input type="search" placeholder="name or number" class="input_search" required>
+        </form>
+        <div class="bottouns">
+            <button class="button btn btn-prev" id="prev">&lt;Previous</button>
+            <button class="button btn btn-next" id="next">Next &gt;</button>
+        </div>
+
+        <img src=" ../static/images/pokedex-img.png" alt="" class=pokedex>
+    </main>
 </body>
 
 </main>

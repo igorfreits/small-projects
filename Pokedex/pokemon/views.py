@@ -1,33 +1,44 @@
-from django.shortcuts import render
-from django.views.generic import View, TemplateView
-import requests
+from django.views.generic import TemplateView, View
 from django.core.paginator import Paginator
-
+from . utils import get_all_pokemons, get_pokemon, term_checker
+from django.shortcuts import render
 # Create your views here.
 
 
 class PokedexView(View):
-    template_name = 'pokemon/pokedex.html'
+    template_name = "pokemon/index.html"
 
-    def get_context_data(self, **kwargs):
-        url = 'http://pokeapi.co/api/v2/pokedex/1/'
-        r = requests.get(url)
-        data = r.json()
-        paginator = Paginator(data['pokemon_entries'], 20)
-        page = self.request.GET.get('page')
-        pokemon_entries = paginator.get_page(page)
-        context = {
-            'pokemon_entries': pokemon_entries
-        }
-        return context
+    def get(self, request):
+        pokemons = get_all_pokemons(898)
+        paginator = Paginator(pokemons, 20)
+        page = request.GET.get('page')
+        pokemons = paginator.get_page(page)
+        return render(request, self.template_name, {'pokemons': pokemons})
 
 
 class PokemonView(TemplateView):
-    template_name = 'pokemon/pokemon_detail.html'
+    template_name = 'pokemon/pokedex.html'
 
-    def get(self, request, pokemon_id):
-        url = f'http://pokeapi.co/api/v2/pokemon/{pokemon_id}/'
-        response = requests.get(url)
-        data = response.json()
+    def get_pokemons(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pokemon = get_pokemon(self.kwargs['url'])
+        context['pokemon'] = pokemon
+        return context
 
-        return render(request, 'pokemon/pokemon_detail.html', {'data': data})
+    def search_pokemon(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        term = self.request.GET.get('term')
+
+        allPokemons = get_all_pokemons(898)
+        pokemonsList = []
+        for pokemon in allPokemons:
+            term_checker(pokemon, term, pokemonsList)
+
+        paginator = Paginator(pokemonsList, paginated_by)
+        page = self.request.GET.get('page')
+        pokemonsList = paginator.get_page(page)
+
+        pokemons = [get_pokemon(pokemon['url']) for pokemon in pokemonsList]
+
+        context['pokemons'] = pokemons
+        context['pokemonsList'] = pokemonsList
