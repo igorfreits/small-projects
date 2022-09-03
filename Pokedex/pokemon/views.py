@@ -17,28 +17,19 @@ class PokedexView(View):
 
 
 class PokemonView(TemplateView):
-    template_name = 'pokemon/pokedex.html'
+    template_name = "pokemon/pokemon.html"
 
-    def get_pokemons(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pokemon = get_pokemon(self.kwargs['url'])
-        context['pokemon'] = pokemon
-        return context
+    def search_pokemons(self, request):
+        term = request.GET.get('term')
+        if term_checker(term):
+            pokemons = get_pokemon(term)
+            return pokemons
+        else:
+            return None
 
-    def search_pokemon(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        term = self.request.GET.get('term')
-
-        allPokemons = get_all_pokemons(898)
-        pokemonsList = []
-        for pokemon in allPokemons:
-            term_checker(pokemon, term, pokemonsList)
-
-        paginator = Paginator(pokemonsList, paginated_by)
-        page = self.request.GET.get('page')
-        pokemonsList = paginator.get_page(page)
-
-        pokemons = [get_pokemon(pokemon['url']) for pokemon in pokemonsList]
-
-        context['pokemons'] = pokemons
-        context['pokemonsList'] = pokemonsList
+    def get(self, request):
+        pokemons = self.search_pokemons(request)
+        if pokemons:
+            return render(request, self.template_name, {'pokemons': pokemons})
+        else:
+            return render(request, self.template_name, {'pokemons': None})
