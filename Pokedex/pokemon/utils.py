@@ -8,6 +8,9 @@ def get_pokemon(url_pokemon: str) -> dict:
     name = specie['name']
     img = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon['id']}.png"
 
+    types = [types['type']['name'].capitalize() for types in pokemon['types']]
+
+    pokemon['types_string'] = ' | '.join(types)
     pokemon['img'] = img
     pokemon['name'] = name.capitalize()
     return pokemon

@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon</title>
-    <link rel="stylesheet" href="./static/css/style-base.css">
+    <meta charset="utf-8">
+    <title>Pokedex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./static/css/style.css">
     <link rel="icon" href="./static/images/pokedex-icon.png">
+
+    <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
     <main>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ request.GET.term }}.png" alt="pokemon"
-            class="pokemon_img">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
+            alt="pokemon" class="pokemon_img">
 
         <h1 class="pokemon_data">
-            <span class="pokemon_number">{{ request.GET.term }}</span> -
-            <span class="pokemon_name">{{ request.GET.term }}</span>
+            <span class="pokemon_number">94</span>
+            <span class="pokemon_name">Gengar</span>
         </h1>
 
-        <form class="form" action="{% url 'pokemon' %}">
-            <input name="termo" type="search" value="{{ request.GET.term }}" placeholder="name or number" class="name or number" required>
+        <form class="form" action="{% url 'pokemon:search' %}" method="GET">
+            <input name="termo" type="search" value="{{ request.GET.term }}" placeholder="name or number"
+                class="name or number" required>
         </form>
         <div class="bottouns">
             <button class="button btn btn-prev" id="prev">&lt;Previous</button>
@@ -31,7 +33,5 @@
         <img src=" ../static/images/pokedex-img.png" alt="" class="pokedex">
     </main>
 </body>
-
-</main>
 
 </html>
