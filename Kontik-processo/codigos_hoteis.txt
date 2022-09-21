@@ -1,0 +1,33 @@
+HANDLE	        NOME
+3421			Manhattan Plaza Brasilia
+4222			Aguas Palace Hotel
+4479			Estanplaza Funchal Faria Lima
+4480			Estanplaza Ibirapuera
+6955			Hotel Joalpa
+10657			Intercity Premium Berrini
+15664			Alice Vitoria Hotel
+20452			Central Palace Hotel Sorriso
+26801			Hotel Cannes
+29743			Mercure Salvador Boulevard
+31632			Blue Tree Premium Verbo Divino
+34316			Hotel Terras da Finlandia
+34786			Amazonia Palace Hotel
+39733			Alphapark Hotel
+40287			Hotel da Torre
+41556			America Palace Hotel Ii
+42118			Golden Tulip Sao Jose dos Campos
+47415			Pajucara Express
+47753			Wyndham Nordelta Tigre Buenos Aires
+48968			Gran Park Hotel e Convencoes
+50461			Gran Executive Hotel
+51217			Hyatt Place Sao Jose do Rio Preto
+53707			Slaviero Executive Guarulhos
+54867			Quality Hotel Pampulha
+55601			Ramada Encore Osasco
+60457			Fity Hotel
+64470			Tryp Belo Horizonte Savassi
+70091			Easy Camburi By Atlantica
+70697			Oft Tamandare Plaza Hotel
+71902			Intercity Canoas
+73081			Slim Curitiba Joao Bettega
+73534			Urbanature Filme e Arte
