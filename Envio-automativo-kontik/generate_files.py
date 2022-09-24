@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import List
 from abc import ABC, abstractmethod
 
 
@@ -16,46 +16,42 @@ class ComandosACC(Comandos):
     def insert(self):
         self.lista_contratos: List[int] = []
         self.lista_handleACC: List[int] = []
-        self.dados: Dict[int, int] = {}
-        while True:
-            self.contratos = int(input('Digite o número de contratos: '))
+        for id in range(1, 150):
+            self.contratos = input(f'{id} - Digite o número de contratos: ')
             self.lista_contratos.append(self.contratos)
 
-            if self.contratos == 0:
+            if self.contratos == 'n':
                 self.lista_contratos.pop()
                 break
-        while True:
-            self.handleACC = int(input('Digite o handleACC: '))
+
+        for id in range(1, 150):
+            self.handleACC = input(f'{id} - Digite o handleACC: ')
             self.lista_handleACC.append(self.handleACC)
 
-            if self.handleACC == 0:
+            if self.handleACC == 'n':
                 self.lista_handleACC.pop()
                 break
-
-        for i in range(len(self.lista_handleACC)):
-            self.dados[self.lista_contratos[i]] = self.lista_handleACC[i]
-
         self.file()
 
     def file(self):
         with open('HOTEL_ACC.txt', 'w') as file:
-            for i in range(len(self.dados)):
+            for i in range(len(self.lista_contratos)):
                 file.write(
                     f'UPDATE VM_PNRACCOUNTINGS SET FORNECEDOR='
                     f'{self.lista_contratos[i]} '
                     f'WHERE HANDLE IN ('
-                    f'{self.lista_handleACC[i]})\n')
+                    f'{self.lista_contratos[i]})\n')
         print('\033[34mArquivo HOTEL_ACC foi gerado com sucesso!\033[m\n')
 
 
 class ComandosPNR(Comandos):
     def insert(self):
         self.lista_pnr: List[int] = []
-        while True:
-            self.pnr = int(input('Digite o número dos PNRs: '))
+        for id in range(1, 150):
+            self.pnr = input(f'{id} - Digite o número dos PNRs: ')
             self.lista_pnr.append(self.pnr)
 
-            if self.pnr == 0:
+            if self.pnr == 'n':
                 self.lista_pnr.pop()
                 break
         self.file()
@@ -73,3 +69,4 @@ class ComandosPNR(Comandos):
                 else:
                     file.write(f'{self.lista_pnr[i]},')
         print('\033[34mArquivo HOTEL_PNR foi gerado com sucesso!\033[m\n')
+
