@@ -2,17 +2,20 @@ from generate_files import ComandosACC, ComandosPNR
 from send_email_update import SendEmail
 
 
-acc = ComandosACC().insert()
-pnr = ComandosPNR().insert()
+if '__main__' == __name__:
+    ComandosACC()
+    ComandosPNR()
 
+    option = input('-Para enviar o e-mail digite "S"'
+                   '\n...').upper()
 
-option = input('Deseja enviar o e-mail? [S/N] ').upper()
+    if option == 'S':
+        try:
+            SendEmail(remetente='INSIRA O E-MAIL DO REMETENTE',
+                      destino='INSIRA O E-MAIL DO DESTINO')
+        except Exception as e:
+            print(e)
+            print('\033[31m-E-mail não enviado!\033[m')
 
-if option == 'S':
-
-    send_email = SendEmail(remetente='igorsantos@kontik.com.br',
-                           destino='josemonalmeida@kontik.com.br')
-    send_email.send_outlook()
-
-else:
-    print('\033[31mE-mail não enviado!\033[m')
+    else:
+        print('\033[31m-E-mail não enviado!\033[m')
