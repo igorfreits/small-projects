@@ -12,7 +12,8 @@ if '__main__' == __name__:
     if option == 'S':
         try:
             SendEmail(remetente='INSIRA O E-MAIL DO REMETENTE',
-                      destino='INSIRA O E-MAIL DO DESTINO')
+                      destino='INSIRA O E-MAIL DO DESTINO', 
+                      copia='INSIRA O E-MAIL DA COPIA')
         except Exception as e:
             print(e)
             print('\033[31m-E-mail não enviado!\033[m')

@@ -1,7 +1,8 @@
 class SendEmail:
-    def __init__(self, remetente, destino):
+    def __init__(self, remetente, destino, copia):
         self.email = remetente
         self.destino = destino
+        self.copia = copia
         self.rename_file()
         self.send_outlook()
         self.delete_file()
@@ -25,20 +26,24 @@ class SendEmail:
 
         email.To = self.destino
         email.Subject = f"UPDATE - {self.nome}"
+        email.CC = self.copia
 
         email.HTMLBody = f"""
-        <p>Olá! <b>Usuário</b>, Segue o UPDATE de {self.nome}.</p>
+        <p>Olá! <b>Usuários</b>, Segue o UPDATE de {self.nome}.</p>
         <p>Até a próxima...</p>
         """
 
-        anexo_1 = 'INSIRA O LOCAL DO ARQUIVO "_ACC"' + \
+        file_acc = 'INSIRA O LOCAL DO ARQUIVO "_ACC"' + \
             f'\\{self.nome}_ACC.txt'
 
-        anexo_2 = 'INSIRA O LOCAL DO ARQUIVO "_PNR"' + \
+        file_pnr = 'INSIRA O LOCAL DO ARQUIVO "_PNR"' + \
             f'\\{self.nome}_PNR.txt'
 
-        email.Attachments.Add(anexo_1)
-        email.Attachments.Add(anexo_2)
+        file_excel = 'INSIRA O LOCAL DO ARQUIVO EXCEL'
+
+        email.Attachments.Add(file_acc)
+        email.Attachments.Add(file_pnr)
+        email.Attachments.Add(file_excel)
 
         try:
             email.Send()
