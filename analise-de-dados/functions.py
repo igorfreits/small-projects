@@ -1,16 +1,6 @@
 from openpyxl.styles import Font, PatternFill, Alignment
 
 
-def custom_guia(guia, a, b):
-    for cell in guia[a:b]:
-        for c in cell:
-            c.fill = PatternFill(start_color='000080FF',
-                                 end_color='000080FF',
-                                 fill_type='solid')
-            c.font = Font(color='FFFFFFFF', bold=True)
-            c.alignment = Alignment(horizontal='center')
-
-
 def contador_erros():
     erros = {
         'total': 0, 'fornecedor': 0, 'sem_trecho': 0, 'bilhete_incompleto': 0,
@@ -21,3 +11,13 @@ def contador_erros():
     }
 
     return erros
+
+
+def custom_guia(guia, a, b, cor, font='FFFFFFFF'):
+    for cell in guia[a:b]:
+        for c in cell:
+            c.fill = PatternFill(start_color=cor,
+                                 end_color=cor,
+                                 fill_type='solid')
+            c.font = Font(color=font, bold=True)
+            c.alignment = Alignment(horizontal='center')

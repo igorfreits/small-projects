@@ -1,11 +1,11 @@
 from openpyxl import Workbook
 import pandas as pd
 from functions import custom_guia, contador_erros
-from mensagens_erro import meses_por_extenso, erros, lancamento_manual, erros_msg, list_erros
+from mensagens_erro import meses_por_extenso, erros, erros_msg, list_erros
 from info import informacoes
 
 
-def analise_dados():
+def analise_dados_zupper():
     arquivo = pd.read_excel(
         'data/Processado Erro.xlsx')
 
@@ -15,32 +15,28 @@ def analise_dados():
     arquivo.fillna('-', inplace=True)
 
     for row in range(len(arquivo)):
-        if 'ZUPPER' in arquivo['Canal de Vendas'][row] \
-                or 'KONTRIP' in arquivo['Canal de Vendas'][row]:
-            arquivo.drop(row, inplace=True)
+        if 'ZUPPER' in arquivo['Canal de Vendas'][row]:
+            arquivo['Observação'][row] = 'Venda - Zupper'
+        if 'KONTRIP' in arquivo['Canal de Vendas'][row]:
+            arquivo['Observação'][row] = 'Venda - Kontrip'
 
     arquivo['Mês Alteração'] = ''
     arquivo['Número da Semana'] = ''
 
     arquivo.to_excel('data/Processado Erro.xlsx', index=False)
 
-    for manual in lancamento_manual:
-        for x in range(len(arquivo)):
-            if manual in arquivo['Observação'][x]:
-                arquivo['Observação'][x] = 'Venda Manual'
+    for x in range(len(arquivo)):
+        if 'Zupper' not in arquivo['Observação'][x] and 'Kontrip' not in arquivo['Observação'][x]:
+            arquivo.drop(x, inplace=True)
 
-    obts = ['Gover', 'TMS', 'HubTravel', 'Lemontech', 'Venda Manual']
+    arquivo.to_excel('data/Processado Erro.xlsx', index=False)
+
+    obts = ['Kontrip', 'Zupper']
 
     contador = {
-        'Gover':
+        'Zupper':
         contador_erros(),
-        'TMS':
-        contador_erros(),
-        'HubTravel':
-        contador_erros(),
-        'Lemontech':
-        contador_erros(),
-        'Venda Manual':
+        'Kontrip':
         contador_erros()
     }
 
@@ -170,11 +166,8 @@ def analise_dados():
     for linha in range(len(arquivo)):
         sheet2['F' + str(linha + 2)] = f'=NÚMSEMANA(D{linha + 2})'
 
-    custom_guia(sheet1, 'A1', 'F1','000080FF')
-    custom_guia(sheet2, 'A1', 'AP1', '000080FF')
-
-    contador['Argo'] = contador.pop('TMS')
-    contador = dict(sorted(contador.items()))
+    custom_guia(sheet1, 'A1', 'F1', '993399')
+    custom_guia(sheet2, 'A1', 'AP1', '993399')
 
     for obt in contador:
         for x, y in list_erros.items():
@@ -208,16 +201,16 @@ def analise_dados():
                 sheet2['AO' + str(row + 2)] = informacoes[y]['solucao']
                 sheet2['AP' + str(row + 2)] = informacoes[y]['responsavel']
 
-    file_relatorio.save('saves/Relatorio.xlsx')
+    file_relatorio.save('saves/Relatorio(Zupper e Kontrip).xlsx')
     print('Processando...')
 
 
 try:
-    analise_dados()
+    analise_dados_zupper()
 
 except KeyError:
-    analise_dados()
+    analise_dados_zupper()
 finally:
-    analise_dados()
+    analise_dados_zupper()
 
 print('\033[1;32m-Relatório gerado com sucesso!\033[m')

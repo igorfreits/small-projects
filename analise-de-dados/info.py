@@ -1,5 +1,5 @@
 # informações para o ralatorio
-infomacoes = {
+informacoes = {
     'Falta de informação Gerencial': {
         'causa': 'Não digitado e/ou falta de campo no Gover',
         'solucao': 'Ajustar venda no Gover e/ou em paralelo preencher o campo',
@@ -55,7 +55,7 @@ infomacoes = {
         'solucao': 'Fazer cobrança de FEE',
         'responsavel': 'Josemon'
     },
-    'Caractere invalido': {
+    'Caractere inválido': {
         'causa': 'Inserido Caractere invalido na venda',
         'solucao': 'Correção e/ou exclusão de caractere do campo',
         'responsavel': 'Operações'
@@ -66,3 +66,4 @@ infomacoes = {
         'responsavel': 'Conciliação'
     }
 }
+

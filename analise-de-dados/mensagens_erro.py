@@ -1,4 +1,3 @@
-# Mensagens de erro e suas respectivas chaves do contador
 erros = {
     'Fornecedor': 'fornecedor',
     'Accouting aérea não possui trechos': 'sem_trecho',
@@ -15,25 +14,40 @@ erros = {
     'name contained an invalid character': 'caracter_invalido',
     'valor permitido!': 'nao_preenchido',
     'Necessário cadastrar um contrato para o cliente': 'cliente_sem_contrato',
-    'Erro excluindo PNR:': 'alterada_baixa',
-    'Erro ao processar PNR ': 'alterada_baixa',
+    'Erro excluindo PNR': 'alterada_baixa',
+    'Erro ao processar PNR': 'alterada_baixa',
     '.xlsx': 'alterada_baixa',
     'A name was started with an invalid character': 'caracter_invalido',
     'possui uma transação de cartão efetivada': 'pagamento_indevido',
+    'A soma das tarifas dos registros múltiplos': 'nao_preenchido',
+    'A semi colon character was expected': 'caracter_invalido',
+    'Whitespace is not allowed at this location': 'caracter_invalido',
+    'Tarifa mínima não pod': 'nao_preenchido',
+    'Tarifa max': 'nao_preenchido',
+    'Não foi possível encontrar configuração': 'pagamento_indevido',
+    'Whitespace is not allowed at this location.  Line': 'caracter_invalido',
+    'mesma está ligada a conciliação de ca': 'bilhete_conciliado',
 }
 
-# Mensagens de vendas manuais que não devem ser substituídas
+meses_por_extenso = {
+    '/01/': 'Janeiro', '/02/': 'Fevereiro', '/03/': 'Março',
+    '/04/': 'Abril', '/05/': 'Maio', '/06/': 'Junho',
+    '/07/': 'Julho', '/08/': 'Agosto', '/09/': 'Setembro',
+    '/10/': 'Outubro', '/11/': 'Novembro', '/12/': 'Dezembro'
+}
+
 lancamento_manual = [
     'Reserva importada via planilh',
     'obs', 'Venda importada pela captura de reserva no Middleware!',
     'SOLICITAÇÃO FEITA PELO EMERGENCIAL', 'Código do emissor SP_I_I',
     '.C criado pela equipe da conciliação aérea para ajuste na forma de pagamento e recebimento',
-    'Bagagem', 'CONTABILIZAÇÃO BAGAGEM', 'CONTABILIZAÇÃO BAGAGEM', 'NAO TEM NO GOVER',
+    'Bagagem', 'CONTABILIZAÇÃO BAGAGEM', 'NAO TEM NO GOVER',
     'Reemissão Involuntária', 'Pet', 'LA*MUILLC', 'SOLICITANTE: MARCELO',
-    'COMPRA DE BAGAGEM EXTRA', 'HOTEL', 'CONTABILIZAÇÃO DE ALTERAÇÃO', 'ASSENTO GOL MAIS CONFORTO'
+    'COMPRA DE BAGAGEM EXTRA', 'HOTEL', 'CONTABILIZAÇÃO DE ALTERAÇÃO',
+    'ASSENTO GOL MAIS CONFORTO', 'Assento', 'Referente compra de bagagem', 'Compra de bagagem',
+    'PNR gerado via WebServic', 'QueroPassagem', 'LA*',
 ]
 
-# chaves do contador e suas informações
 list_erros = {
     'fornecedor': 'Falta de Fornecedor',
     'bilhete_incompleto': 'Bilhete incompleto',
@@ -45,14 +59,40 @@ list_erros = {
     'sem_trecho': 'Accounting sem trecho',
     'cliente_sem_contrato': 'Cliente sem contrato de fornecedor',
     'nao_preenchido': 'Falta de informação Gerencial',
-    'caracter_invalido': 'Caracter inválido',
+    'caracter_invalido': 'Caractere inválido',
     'cobraca_nao_permitida': 'Pagamento não permitido para cobrança',
     'bilhete_conciliado': 'Bilhete conciliado'
 }
 
-meses_por_extenso = {
-    '/01/': 'Janeiro', '/02/': 'Fevereiro', '/03/': 'Março',
-    '/04/': 'Abril', '/05/': 'Maio', '/06/': 'Junho',
-    '/07/': 'Julho', '/08/': 'Agosto', '/09/': 'Setembro',
-    '/10/': 'Outubro', '/11/': 'Novembro', '/12/': 'Dezembro'
+erros_msg = {
+    'Accouting aérea não possui trechos': 'Accounting sem trecho',
+    'Falta informar o status no trecho': 'Accounting sem trecho',
+    'Bilhete deve ter 10 caracteres!': 'Bilhete incompleto',
+    'Pnr já existente. A duplicidade de rloc': 'Duplicidade de RLOC',
+    'não pree': 'Falta de informação Gerencial',
+    'Fornecedor': 'Falta de Fornecedor',
+    'VerificaÃ§Ã£o de bilhetes': 'Bilhete duplicado',
+    'Não foi possível encontrar um contrato válido para o fornecedor': 'Contrato de fornecedor Inspirado',
+    'Este cliente não possui permissão para usar este tipo de pagamento': 'Pagamento não permitido para cobrança',
+    'Módulo Operações': 'Forma de Pagamento indevida',
+    'conciliada no BSP': 'Bilhete conciliado',
+    'is not a valid integer value': 'Caracter inválido',
+    'name contained an invalid character': 'Caracter inválido',
+    'valor permitido!': 'Falta de informação Gerencial',
+    'Necessário cadastrar um contrato para o cliente': 'Cliente sem contrato de fornecedor',
+    'Erro excluindo PNR': 'Alteração após baixa',
+    'Erro ao processar PNR': 'Alteração após baixa',
+    '.xlsx': 'Alteração após baixa',
+    'A name was started with an invalid character': 'Caracter inválido',
+    'possui uma transação de cartão efetivada': 'Forma de Pagamento indevida',
+    'A soma das tarifas dos registros múltiplos': 'Falta de informação Gerencial',
+    'A semi colon character was expected': 'Caracter inválido',
+    'Whitespace is not allowed at this location': 'Caracter inválido',
+    'Tarifa mínima não pode': 'Falta de informação Gerencial',
+    'Não foi possível encontrar configuração': 'Forma de Pagamento indevida',
+    'Tarifa max': 'Falta de informação Gerencial',
+    'Não foi possível encontrar configuração': 'Forma de Pagamento indevida',
+    'Whitespace is not allowed at this location.  Line': 'Caracter inválido',
+    'mesma está ligada a conciliação de ca': 'Bilhete conciliado',
+
 }
